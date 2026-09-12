@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redline — prompt archive</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="google" content="notranslate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="frame">
+<header class="masthead">
+<div class="wordmark" aria-label="Redline">
+<span class="wordmark__text">Redline</span><span class="wordmark__mark" aria-hidden="true"></span>
+</div>
+<p class="masthead__sub">a working archive of prompts</p>
+<div class="masthead__stats" id="stats">0 entries on file</div>
+</header>
+<div class="body-grid">
+<aside class="margin" aria-label="Filters">
+<section class="margin__block">
+<h2 class="margin__label">Search</h2>
+<input id="searchInput" class="input" type="search" placeholder="Find in archive…" autocomplete="off">
+</section>
+<section class="margin__block">
+<h2 class="margin__label">Tags</h2>
+<ul id="tagList" class="tag-list">
+<li class="tag-list__empty">No tags yet</li>
+</ul>
+</section>
+<section class="margin__block">
+<h2 class="margin__label">Sort</h2>
+<select id="sortSelect" class="input">
+<option value="updated-desc">Recently edited</option>
+<option value="created-desc">Recently added</option>
+<option value="title-asc">Title A–Z</option>
+<option value="pinned-first">Pinned first</option>
+</select>
+</section>
+<section class="margin__block">
+<h2 class="margin__label">Archive</h2>
+<div class="margin__actions">
+<button id="exportBtn" class="btn btn--ghost" type="button">Export JSON</button>
+<label class="btn btn--ghost btn--file">
+Import JSON
+<input id="importInput" type="file" accept="application/json" hidden>
+</label>
+</div>
+</section>
+</aside>
+<main class="ledger" aria-label="Prompt entries">
+<div class="ledger__toolbar">
+<div class="ledger__toolbar-left">
+<span id="resultCount" class="ledger__count">0 shown</span>
+</div>
+<button id="newEntryBtn" class="btn btn--insert" type="button">
+<span class="btn__mark" aria-hidden="true">+</span> New entry
+</button>
+</div>
+<div id="entryList" class="entry-list" role="list"></div>
+<div id="emptyState" class="empty-state" hidden>
+<p class="empty-state__mark" aria-hidden="true">¶</p>
+<p class="empty-state__title">No entries yet.</p>
+<p class="empty-state__body">Click <strong>New entry</strong> to begin the document.</p>
+</div>
+</main>
+</div>
+</div>
+<div id="overlay" class="overlay" hidden></div>
+<aside id="editorPanel" class="editor" aria-hidden="true" aria-label="Edit entry">
+<form id="editorForm">
+<div class="editor__head">
+<h2 id="editorTitle" class="editor__title">New entry</h2>
+<button type="button" id="closeEditorBtn" class="icon-btn" aria-label="Close editor">✕</button>
+</div>
+<label class="field">
+<span class="field__label">Title</span>
+<input id="fieldTitle" class="input" type="text" required maxlength="120" placeholder="e.g. Cold outreach — technical recruiter">
+</label>
+<label class="field">
+<span class="field__label">Tags <span class="field__hint">comma separated</span></span>
+<input id="fieldTags" class="input" type="text" placeholder="e.g. writing, outreach, short">
+</label>
+<label class="field field--grow">
+<span class="field__label">Prompt</span>
+<textarea id="fieldBody" class="input input--mono" required placeholder="Write the prompt exactly as you send it to the model…"></textarea>
+</label>
+<label class="field">
+<span class="field__label">Notes <span class="field__hint">optional — what it's for, which model, gotchas</span></span>
+<textarea id="fieldNotes" class="input input--notes" placeholder="Optional context for future you"></textarea>
+</label>
+<label class="pin-row">
+<input id="fieldPinned" type="checkbox">
+<span>Pin to top</span>
+</label>
+<div class="editor__actions">
+<button type="button" id="deleteEntryBtn" class="btn btn--delete" hidden>Delete</button>
+<div class="editor__actions-right">
+<button type="button" id="cancelEditBtn" class="btn btn--ghost">Cancel</button>
+<button type="submit" class="btn btn--insert">Save entry</button>
+</div>
+</div>
+</form>
+</aside>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+<script src="js/security/bot-detection.js"></script>
+<script src="js/security/rate-limiter.js"></script>
+<script src="js/security/scraper-guard.js"></script>
+<script src="js/security/ai-crawler-notice.js"></script>
+<script src="js/vault-decrypt.js"></script>
+</body>
+</html>

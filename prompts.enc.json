@@ -1,0 +1,6 @@
+{
+"version": 1,
+"kdf": "PBKDF2-SHA256-100000",
+"cipher": "AES-GCM-256",
+"entries": []
+}
