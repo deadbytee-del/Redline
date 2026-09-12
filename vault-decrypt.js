@@ -1,6 +1,6 @@
 (function () {
 "use strict";
-const VAULT_PATH = "data/prompts.enc.json";
+const VAULT_PATH = "prompts.enc.json";
 const ITERATIONS = 100000;
 function b64ToBytes(b64) {
 const bin = atob(b64);

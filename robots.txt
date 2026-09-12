@@ -1,10 +1,10 @@
 # Redline — robots.txt
 # This only works against crawlers that choose to fetch and honor it.
-# It is not a technical enforcement mechanism — see js/security/README-security.md.
+# It is not a technical enforcement mechanism — see README-security.md.
 
 User-agent: *
 Disallow: /
-Disallow: /dev/
+Disallow: /prompt-encoder.html
 
 # --- AI training crawlers (as published by their operators) ---
 User-agent: GPTBot
